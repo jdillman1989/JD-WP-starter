@@ -1,0 +1,25 @@
+{% extends "base.twig" %}
+
+{% block content %}
+
+	<header>
+		<h1>{{options_title}}</h1>
+		<h2>{{options_description}}</h2>
+	</header>
+
+{% if post_data %}
+	<section>
+		{% for post in post_data %}
+
+			<article>
+				<img src="{{post.image}}"/>
+				<h3>{{post.title}}</h3>
+				<p>{{function('wp_trim_words', post.excerpt, 18, '&hellip;')}}</p>
+				<a href="{{post.permalink}}">Read More</a>
+			</article>
+
+		{% endfor %}
+	</section>
+{% endif %}
+
+{% endblock %}

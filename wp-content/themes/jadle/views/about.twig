@@ -1,0 +1,29 @@
+{% extends "base.twig" %}
+
+{% block content %}
+
+	<section>
+		<h2>{{post.post_title}}</h2>
+
+		{% for layout in data.about_layouts %}
+
+			{% if layout.acf_fc_layout == "layout_1" %}
+				<article>
+					<img src="{{layout.image}}" />
+					<h3>{{layout.title}}</h3>
+					<h3>{{layout.content}}</h3>
+				</article>
+			{% endif %}
+
+			{% if layout.acf_fc_layout == "layout_2" %}
+				<article>
+					<h3>{{layout.title}}</h3>
+					<h3>{{layout.content}}</h3>
+					<img src="{{layout.image}}" />
+				</article>
+			{% endif %}
+
+		{% endfor %}
+	</section>
+
+{% endblock %}

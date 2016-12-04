@@ -1,0 +1,10 @@
+<header>
+  <nav>
+    <a href="{{blog_url}}" class="logo">
+      <img src="{{images_uri}}/logo.png"/>
+    </a>
+		{% for nav_link in main_navigation_links %}
+			<a href="{{nav_link.url}}">{{nav_link.label}}</a>
+		{% endfor %}
+  </nav>
+</header>

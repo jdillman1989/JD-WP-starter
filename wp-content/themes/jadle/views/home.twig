@@ -1,0 +1,26 @@
+{% extends "base.twig" %}
+
+{% block content %}
+
+	<header>
+		<h1>{{data.intro_title}}</h1>
+		<p>{{data.intro_content}}</p>
+	</header>
+
+	{% if event_data %}
+		<section>
+			{% for event in event_data %}
+				<article>
+					{% if event.image %}
+						<img src="{{post.image.url}}"/>
+					{% endif %}
+					<h3>{{event.title}}, {{event.location}}</h3>
+					<p>{{event.description}}</p>
+					<a href="{{event.permalink}}">Read More</a>
+				</article>
+			{% endfor %}
+		</section>
+	{% endif %}
+
+
+{% endblock %}
