@@ -1,0 +1,48 @@
+@import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,400,400italic,700);
+@import url(https://fonts.googleapis.com/css?family=Crimson+Text);
+
+$headline: "Source Sans Pro", sans-serif;
+$body: "Crimson Text", serif;
+
+$fontsizeXL: 3;
+$fontsizeL: 2;
+$fontsizeM: 1.5;
+$fontsizeS: 1;
+$fontsizeXS: 0.8;
+
+a{
+	text-decoration: underline;
+}
+
+strong{
+	font-weight: bold;
+}
+
+em{
+	font-style: italic;
+}
+
+p{
+	font-size: ($fontsizeS) + em;
+	font-family: $body; 
+	line-height: 1.2; 
+	
+	&:not(:last-of-type){
+		margin-bottom: ($fontsizeS) + em;
+	}
+}
+
+h3{
+	font-size: ($fontsizeM) + em;
+	font-family: $headline; 
+}
+
+h2{
+	font-size: ($fontsizeL) + vw;
+	font-family: $headline; 
+}
+
+h1{
+	font-size: ($fontsizeXL) + vw;
+	font-family: $headline; 
+}
