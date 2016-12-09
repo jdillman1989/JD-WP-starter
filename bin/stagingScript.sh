@@ -1,7 +1,5 @@
-
-cd $WEBROOT$STAGING;
-
 echo "Installing WordPress";
+cd $PUBLIC;
 wget http://wordpress.org/latest.tar.gz;
 tar xfz latest.tar.gz;
 mv wordpress/* ./;
@@ -9,6 +7,7 @@ rmdir ./wordpress/;
 rm -f latest.tar.gz;
 
 echo "Installing Git deployment";
+cd $WEBROOT;
 mkdir $STAGING.git;
 cd $STAGING.git;
 git init --bare;
@@ -16,17 +15,17 @@ cd hooks;
 touch post-receive;
 echo "#!/bin/sh
 unset GIT_DIR;
-export GIT_WORK_TREE=$WEBROOT$STAGING/app;
-export GIT_DIR=$WEBROOT$STAGING/$STAGING.git;
+export GIT_WORK_TREE=$WEBROOT/build;
+export GIT_DIR=$WEBROOT/$STAGING.git;
 git checkout -f master;
-cd $WEBROOT$STAGING/app;
+cd $WEBROOT/build;
 gulp;
-rsync -r $WEBROOT$STAGING/app/wp-content/* $WEBROOT$STAGING/wp-content/" >> post-receive;
+rsync -r $WEBROOT/build/wp-content/* $PUBLIC/wp-content/" >> post-receive;
 
 echo "Installing Gulp";
-cd $WEBROOT$STAGING;
-mkdir app;
-cd app;
+cd $WEBROOT;
+mkdir build;
+cd build;
 touch package.json;
 echo '{
   "name": "Jadle",
@@ -44,6 +43,6 @@ echo '{
 npm install;
 
 echo "Setting up deployments";
-cd $WEBROOT$STAGING/$STAGING.git/hooks;
+cd $WEBROOT/$STAGING.git/hooks;
 chmod 775 post-receive;
 echo "Complete";
