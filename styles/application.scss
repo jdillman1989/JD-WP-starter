@@ -1,6 +1,17 @@
 @charset "UTF-8";
 
-@import "vendor/*";
-@import "components/*";
-@import "objects/*";
-@import "pages/*";
+@import "vendor/defaults";
+@import "vendor/reset";
+
+@import "components/variables";
+@import "components/mixin";
+@import "components/colors";
+@import "components/typography";
+
+@import "objects/header";
+@import "objects/main-container";
+@import "objects/aside";
+@import "objects/cta";
+@import "objects/footer";
+
+@import "pages/index";
