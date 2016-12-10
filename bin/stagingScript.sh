@@ -1,3 +1,4 @@
+
 echo "Installing WordPress";
 cd $PUBLIC;
 wget http://wordpress.org/latest.tar.gz;
@@ -18,8 +19,7 @@ unset GIT_DIR;
 export GIT_WORK_TREE=$WEBROOT/build;
 export GIT_DIR=$WEBROOT/$STAGING.git;
 git checkout -f master;
-cd $WEBROOT/build;
-gulp;
+cd $WEBROOT/build && gulp;
 rsync -r $WEBROOT/build/wp-content/* $PUBLIC/wp-content/" >> post-receive;
 
 echo "Installing Gulp";
@@ -32,11 +32,8 @@ echo '{
   "version": "1.1.0",
   "devDependencies": {
     "gulp": "^3.9.0",
-    "gulp-autoprefixer": "^0.0.10",
-    "gulp-combine-mq": "^0.4.0",
-    "gulp-css-globbing": "^0.1.2",
-    "gulp-newer": "^0.3.0",
     "gulp-sass": "^2.0.4",
+    "gulp-imagemin": "^3.1.1",
     "gulp-uglify": "^1.0.1"
   }
 }' >> package.json;
