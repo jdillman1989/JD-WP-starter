@@ -12,3 +12,4 @@ cat stagingScript.sh >> installStaging.sh;
 SCRIPT=`cat installStaging.sh`;
 ssh -t $SERVER "sh $SCRIPT";
 git remote add staging $SERVER:$WEBROOT/$STAGING.git;
+rm installStaging.sh;
